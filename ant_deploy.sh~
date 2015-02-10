@@ -19,7 +19,7 @@ BRANCH_ARG=${1^^}
 emptyCheck() {
 if [ -z "$BRANCH_ARG" ]
 then
-	exit 1
+	echo "empty branch name, please use script like 'ant_deploy.sh <hg-branch>'"
 else
 	echo "Hello," $USER"! It looks like you're trying to build" $BRANCH_ARG "on" $HOSTNAME
 	echo "First lets double check that branch exists:"
