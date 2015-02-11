@@ -20,7 +20,7 @@ emptyCheck() {
 if [ -z "$BRANCH_ARG" ]
 then
 	echo "Missing branch argument, please run script with branch name"
-	echo "Example: "$> ./ant_deploy AD-1234" 1>&2
+	echo "Example: $> ./ant_deploy AD-1234" 1>&2
 	exit 1
 else
 	echo "Hello," $USER"! It looks like you're trying to build" $BRANCH_ARG "on" $HOSTNAME
