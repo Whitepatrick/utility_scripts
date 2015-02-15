@@ -7,15 +7,15 @@
 # any repo has a commit to master
 
 # colors
+init() {
 LGT_YLW="\e[93m"
 GREEN="\e[32m"
 RED="\e[91m"
 DEFAULT="\e[0m"
 
 REPOS=( "work_ruby" "utility_scripts" "20eyes-web" "qa_bot" "sinatra_dev" "mag_libs" "scpeace" "freshzings" )
+WORK_ROOT=/home/zaphod/workspace
 
-
-setPath() {	
 	if [ $HOSTNAME == "hastur" ] || [ $USER == "zaphod" ]; then
 		echo "Hello $USER, lets begin"
 		REPO_PATH=/home/zaphod/workspace
@@ -25,15 +25,14 @@ setPath() {
 		REPO_PATH=/home/patrick/hound/data
 		echo "setting repo path variable as $REPO_PATH"
 	fi
-
 }
-
 dirCheck() {
 	if [[ ! -d "$REPO_PATH" ]]; then
-  		mkdir workspace && cd workspace
+  		mkdir $REPO_PATH && cd $REPO_PATH
 	else
-		cd $REPO_PATH
+		cd $REPO_PATH		
 	fi
+getRepos
 }
 
 getRepos() {
@@ -43,15 +42,16 @@ getRepos() {
 		echo "---------------"
 		echo
 		if [[ ! -d $repo ]]; then
-			cd $REPO_PATH && git clone http://github.com/whitepatrick/"$repo".git
+			git clone http://github.com/whitepatrick/$repo.git
 		else
-			source pull.sh; pull
+			cd $repo && git pull; cd ..
 		fi
 		echo
 
 	done
 }
 
-setPath
+init
 dirCheck
-getRepos
+
+
