@@ -6,8 +6,10 @@
 # of my web repo. Will add functionality to be triggered when
 # any repo has a commit to master
 
-cd /home/patrick/hound/data
-
+pull() {
+source clone_git_repos.sh
+setPath 
+cd $REPO_PATH
 # assign repo dirs to an array
 GITS=( "work_ruby" "utility_scripts" "20eyes-web" "qa_bot" )
 
@@ -16,3 +18,6 @@ for i in "${GITS[@]}"
 do
         cd $i && git pull ; cd ../
 done
+}
+
+pull

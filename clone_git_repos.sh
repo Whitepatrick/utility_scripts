@@ -6,11 +6,17 @@
 # of my web repo. Will add functionality to be triggered when
 # any repo has a commit to master
 
+# colors
+LGT_YLW="\e[93m"
+GREEN="\e[32m"
+RED="\e[91m"
+DEFAULT="\e[0m"
+
 REPOS=( "work_ruby" "utility_scripts" "20eyes-web" "qa_bot" "sinatra_dev" "mag_libs" "scpeace" "freshzings" )
 
-main() {	
-	if [ $HOSTNAME == "hastur" ] || [ $USER == "zaphod" ]
-	then
+
+setPath() {	
+	if [ $HOSTNAME == "hastur" ] || [ $USER == "zaphod" ]; then
 		echo "Hello $USER, lets begin"
 		REPO_PATH=/home/zaphod/workspace
 		echo "setting repo path variable as $REPO_PATH"
@@ -19,31 +25,33 @@ main() {
 		REPO_PATH=/home/patrick/hound/data
 		echo "setting repo path variable as $REPO_PATH"
 	fi
-dirCheck
+
 }
 
 dirCheck() {
-	if [ ! -d "$REPO_PATH" ]
-	then
+	if [[ ! -d "$REPO_PATH" ]]; then
   		mkdir workspace && cd workspace
 	else
 		cd $REPO_PATH
 	fi
-getRepos
 }
 
 getRepos() {
-	for i in "${REPOS[@]}"
+	for repo in "${REPOS[@]}"
 	do
-		if [ ! -d "$i" ]
-		then
-			cd $REPO_PATH
-			git clone http://github.com/whitepatrick/"$i".git
+		echo -e "$GREEN $repo $DEFAULT"
+		echo "---------------"
+		echo
+		if [[ ! -d $repo ]]; then
+			cd $REPO_PATH && git clone http://github.com/whitepatrick/"$repo".git
 		else
-			cd $i && git pull
+			source pull.sh; pull
 		fi
+		echo
+
 	done
 }
 
-main
-
+setPath
+dirCheck
+getRepos
