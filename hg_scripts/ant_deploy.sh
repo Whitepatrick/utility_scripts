@@ -40,6 +40,7 @@ then
 else
 	echo "Thats a bad branch tag, Oops!"
 	echo "Double check you're inputing a valid branch name for the main repo"
+	exit 1
 fi
 }
 
@@ -51,11 +52,13 @@ case "$HOSTNAME" in
 ## Check if this is a web or util server and deploy
 	*web*|*left*|*right*|*util*)
 		echo "Deploying" $BRANCH_ARG "to" $HOSTNAME
+		echo "Executing: ant hg-deploy-releasetag -Dreleasetag="$BRANCH_ARG
 		cd /home/tomcat/hgwork/main && ant hg-deploy-releasetag -Dreleasetag=$BRANCH_ARG
 	;;
 ## Check if this is a launcher or voodoosim and deploy
 	*launch*|*sim*)
 		echo "Deploying" $BRANCH_ARG "to" $HOSTNAME
+		echo "Executing: ant hg-deploy-releasetag-specific -Dwebapps=m,wrapper -Dreleasetag="$BRANCH_ARG
 		cd /home/tomcat/hgwork/main && ant hg-deploy-releasetag-specific -Dwebapps=m,wrapper -Dreleasetag=$BRANCH_ARG
 	;;
 esac
