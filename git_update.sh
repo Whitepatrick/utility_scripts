@@ -22,7 +22,7 @@ GREEN="\e[32m"
 RED="\e[91m"
 DEFAULT="\e[0m"
 # array cotaining github repositories for user whitepatrick
-REPOS=( "work_ruby" "utility_scripts" "20eyes-web" "qa_bot" "sinatra_dev" "mag_libs" "scpeace" "freshzings" "xmpp4r-robot")
+REPOS=( "work_ruby" "utility_scripts" "20eyes-web" "qa_bot" "sinatra_dev" "mag_libs" "scpeace" "freshzings" "xmpp4r-robot" "gnudism_bot" )
 # set repo path with conditions
 if [ $HOSTNAME == "hastur" ] || [ $USER == "zaphod" ]; then
 	REPO_PATH=/home/zaphod/workspace
