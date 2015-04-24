@@ -32,7 +32,7 @@ GREEN="\e[32m"
 RED="\e[91m"
 DEFAULT="\e[0m"
 
-PACKAGES="git guake terminator build-essential python-pip php5 ant apache2 audacious curl default-jdk default-jre	default-jre-headless docker.io flashplugin-installer fonts-inconsolata fonts-liberation gedit gedit-common gimp git-core gmusicbrowser gpodder graphite-carbon graphite-web rake nodejs openjdk-7-jdk openjdk-7-jre-headless openssh-client openssh-server openvpn p7zip php5 pidgin pithos playonlinux postgresql ruby sqlite3 statsd steam tcpdump tmux tomcat7-common ttf-mscorefonts-installer vim vlc wget wine winetricks libnotify-bin"
+PACKAGES="git guake tilda terminator build-essential python-pip php5 ant apache2 audacious curl default-jdk default-jre	default-jre-headless docker.io flashplugin-installer fonts-inconsolata fonts-liberation gedit gedit-common gimp git-core gmusicbrowser gpodder graphite-carbon graphite-web rake nodejs openjdk-7-jdk openjdk-7-jre-headless openssh-client openssh-server openvpn p7zip php5 pidgin pithos playonlinux postgresql ruby sqlite3 steam tcpdump tmux tomcat7-common ttf-mscorefonts-installer vim vlc wget wine winetricks libnotify-bin"
 
 # call next function in line 
 checkForFullTerm
@@ -51,7 +51,7 @@ updateAndInstall() {
 
 	apt-get install $PACKAGES -y
 	
-	chmod +rw $OUTPUT_PATH/install_output_*	
+#	chmod +rw $OUTPUT_PATH/install_output_*	
 
 	echo
 	echo "***********************************************************"

@@ -12,8 +12,8 @@ QA_WEB="http://alquemie.qa.smartbrief.com" # QA
 PQA_WEB="http://alquemie.projectqa.smartbrief.com" # Project QA
 PQA2_WEB="http://alquemie.projectqa2.smartbrief.com" # Project QA 2
 
-
-
-curlAlc() {
-
-}
+until $(curl --output /dev/null --silent --head --fail ${QA_WEB}); do
+	printf '.'
+	sleep 5
+done
+echo "ALL YOUR ALCHEMY ARE BELONG TO US"
